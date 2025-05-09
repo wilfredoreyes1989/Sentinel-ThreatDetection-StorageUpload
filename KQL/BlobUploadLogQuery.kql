@@ -1,0 +1,5 @@
+StorageBlobLogs
+| where OperationName == "PutBlob"
+| where Uri contains "internal-malware-test"
+| sort by TimeGenerated desc
+| project TimeGenerated, Uri, CallerIpAddress, AuthenticationType, StatusCode
